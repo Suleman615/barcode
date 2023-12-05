@@ -32,9 +32,12 @@
             console.log(`Code matched = ${decodedText}`, decodedResult);
         }
 
-        function onScanFail() {
+        function onScanFail(results) {
             // handle the scanned code as you like, for example:
             console.log('No match found');
+            document.getElementById('result').innerHTML = `
+            <p>${results}</p>
+            `
         }
 
         let config = {
