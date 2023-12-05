@@ -18,6 +18,9 @@
     <main>
         <div style="width: 400px; height: 400px;" id="reader"></div>
         <div id="result"></div>
+        <button id="toggleFlashlight">Toggle Flashlight</button>
+
+
     </main>
 
 
@@ -43,6 +46,17 @@
             document.getElementById('result').innerHTML = `
             <p>${results}</p>
             `
+        }
+
+        const toggleFlashlightButton = document.getElementById('toggleFlashlight');
+        if (config.howTorchButtonIfSupported && html5QrcodeScanner.isTorchAvailable()) {
+            toggleFlashlightButton.style.display = 'block';
+
+            toggleFlashlightButton.addEventListener('click', () => {
+                html5QrcodeScanner.toggleTorch();
+            });
+        } else {
+            toggleFlashlightButton.style.display = 'none';
         }
 
         let config = {
