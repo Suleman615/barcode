@@ -28,8 +28,15 @@
 
 
         function onScanSuccess(decodedText, decodedResult) {
+            document.getElementById('result').innerHTML = `
+            <p>${decodedText}</p>
+            <p>${decodedResult}</p>
+
+            `
+
+            html5QrcodeScanner.clear();
+
             // handle the scanned code as you like, for example:
-            console.log(`Code matched = ${decodedText}`, decodedResult);
         }
 
         function onScanFail(results) {
