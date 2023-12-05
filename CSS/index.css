@@ -6,9 +6,15 @@ body {
 }
 
 #reader {
-    padding: 50px !important;
+    width: 350px;
+    padding: 20px !important;
+    border-radius: 20px;
+    border: dashed !important;
 }
 
+#reader__scan_region {
+    src: url('/unnamed.png') !important;
+}
 
 #reader div:nth-child(1) img {
     display: none;
