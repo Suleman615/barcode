@@ -13,7 +13,7 @@
     <main>
         <div id="reader"></div>
         <div id="result"></div>
-        <button onclick="toggleFlash()" id="toggleFlashlight">Toggle Flashlight</button>
+        <button style="margin: auto;" onclick="toggleFlash()" id="toggleFlashlight">Toggle Flashlight</button>
     </main>
 
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
@@ -42,8 +42,24 @@
 
         let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
 
-        function toggleFlash() {
-            html5QrcodeScanner.toggleTorch()
+        async function toggleFlash() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+                const track = stream.getVideoTracks()[0];
+
+                const capabilities = track.getCapabilities();
+                if (capabilities.torch && capabilities.torch.mode.includes('manual')) {
+                    const isTorchOn = track.getSettings().torch === true;
+                    await track.applyConstraints({ advanced: [{ torch: !isTorchOn }] });
+                    console.log(`Flashlight turned ${isTorchOn ? 'off' : 'on'}.`);
+                } else {
+                    console.log('Torch mode not supported.');
+                }
+
+                track.stop();
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+            }
         }
 
         html5QrcodeScanner.render(onScanSuccess, onScanFail)
