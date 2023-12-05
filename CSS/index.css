@@ -58,6 +58,10 @@ body {
     align-items: center;
 }
 
+span {
+    display: block;
+}
+
 video {
     height: 300px;
     min-width: 300px;
