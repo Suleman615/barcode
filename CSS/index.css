@@ -30,22 +30,31 @@ body {
     font-weight: bold;
 }
 
+
+
+
+
 #reader__header_message {
     padding: 10px !important;
     font-size: 20px !important;
 }
 
+#qr-shaded-region {
+    margin: auto !important;
+    border-color: black !important;
+}
+
 #result {
     display: block;
-    position: fixed;
-    width: 500px;
+    max-width: 500px !important;
+    min-width: 80vw;
 }
 
 video {
     height: 300px;
+    margin: auto;
 }
 
-#html5-qrcode-button-camera-stop {}
 
 /* for image */
 /* #reader div:nth-of-type(2) {
