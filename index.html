@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <script src="./node_modules/html5-qrcode/html5-qrcode.min.js"></script>
+
+</head>
+
+<body>
+
+
+
+
+    <main>
+        <div id="reader"></div>
+        <div id="result"></div>
+    </main>
+
+
+    <script>
+
+
+        async function gettingCamera() {
+            return camera = await navigator.mediaDevices.enumerateDevices()
+                .then(devices => devices.filter(device => device.kind === 'videoinput')[0]);
+
+        }
+
+
+        console.log(gettingCamera())
+
+        function onScanSuccess(decodedText, decodedResult) {
+            // handle the scanned code as you like, for example:
+            console.log(`Code matched = ${decodedText}`, decodedResult);
+        }
+
+        function onScanFail() {
+            // handle the scanned code as you like, for example:
+            console.log('No match found');
+        }
+
+        let config = {
+            fps: 10,
+            qrbox: { width: 250, height: 250 },
+            rememberLastUsedCamera: false,
+            howTorchButtonIfSupported: true,
+            supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
+        };
+
+        let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, /* verbose= */ false);
+
+        html5QrcodeScanner.render(onScanSuccess, onScanFail)
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
