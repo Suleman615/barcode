@@ -46,8 +46,16 @@ body {
 
 #result {
     display: block;
-    max-width: 500px !important;
-    min-width: 80vw;
+    max-width: 80vw;
+    margin: auto;
+    text-align: center;
+}
+
+#reader__dashboard_section_csr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 video {
