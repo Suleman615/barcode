@@ -18,13 +18,14 @@
     <main>
         <div style="width: 400px; height: 400px;" id="reader"></div>
         <div id="result"></div>
-        <button id="toggleFlashlight">Toggle Flashlight</button>
+        <button onclick=toggleFlash() id="toggleFlashlight">Toggle Flashlight</button>
 
 
     </main>
 
 
-    <script src="/JS/index.js"></script>
+    <!-- <script src="/JS/index.js"></script> -->
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>
 
 
@@ -48,16 +49,11 @@
             `
         }
 
-        const toggleFlashlightButton = document.getElementById('toggleFlashlight');
-        if (config.howTorchButtonIfSupported && html5QrcodeScanner.isTorchAvailable()) {
-            toggleFlashlightButton.style.display = 'block';
+        function toggleFlash() {
+            html5QrcodeScanner.toggleTorch();
 
-            toggleFlashlightButton.addEventListener('click', () => {
-                html5QrcodeScanner.toggleTorch();
-            });
-        } else {
-            toggleFlashlightButton.style.display = 'none';
         }
+
 
         let config = {
             fps: 10,
