@@ -25,14 +25,7 @@
     <script>
 
 
-        async function gettingCamera() {
-            return camera = await navigator.mediaDevices.enumerateDevices()
-                .then(devices => devices.filter(device => device.kind === 'videoinput')[0]);
 
-        }
-
-
-        console.log(gettingCamera())
 
         function onScanSuccess(decodedText, decodedResult) {
             // handle the scanned code as you like, for example:
