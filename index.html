@@ -45,18 +45,7 @@
         html5QrcodeScanner.render(onScanSuccess, onScanFail)
 
 
-        function toggleFlash(powerOn) {
-            if (html5QrcodeScanner.getState() === Html5QrcodeScannerState.SCANNING ||
-                html5QrcodeScanner.getState() === Html5QrcodeScannerState.PAUSED
-            ) {
-                html5QrcodeScanner.applyVideoConstraints(
-                    {
-                        advanced: [{ torch: powerOn }]
-                    });
-            }
-        }
 
-        toggleFlash(true)
 
     </script>
 </body>
