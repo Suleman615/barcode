@@ -30,8 +30,6 @@
         function onScanSuccess(decodedText, decodedResult) {
             document.getElementById('result').innerHTML = `
             <p>${decodedText}</p>
-            <p>${decodedResult}</p>
-
             `
 
             html5QrcodeScanner.clear();
@@ -55,7 +53,7 @@
             supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
         };
 
-        let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, /* verbose= */ false);
+        let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
 
         html5QrcodeScanner.render(onScanSuccess, onScanFail)
 
