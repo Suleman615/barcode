@@ -9,9 +9,6 @@ body {
     padding: 50px !important;
 }
 
-option {
-    padding: 5px 10px;
-}
 
 #reader div:nth-child(1) img {
     display: none;
