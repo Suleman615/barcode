@@ -5,115 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-
-
 </head>
 
 <body>
-
-
-
-
     <main>
         <div style="width: 400px; height: 400px;" id="reader"></div>
         <div id="result"></div>
-        <button onclick=toggleFlashlight() id="toggleFlashlight">Toggle Flashlight</button>
-
-
+        <button onclick="toggleFlash()" id="toggleFlashlight">Toggle Flashlight</button>
     </main>
 
-
-    <!-- <script src="/JS/index.js"></script> -->
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>
-
-
-
-
         function onScanSuccess(decodedText, decodedResult) {
             document.getElementById('result').innerHTML = `
             <p>${decodedText}</p>
             `
-
             html5QrcodeScanner.clear();
-
-            // handle the scanned code as you like, for example:
         }
 
         function onScanFail(results) {
-            // handle the scanned code as you like, for example:
             console.log('No match found');
             document.getElementById('result').innerHTML = `
             <p>${results}</p>
             `
         }
 
-        // function toggleFlash() {
-        //     html5QrcodeScanner.toggleTorch();
+        async function toggleFlash() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+                const track = stream.getVideoTracks()[0];
 
-        // }
+                const capabilities = track.getCapabilities();
+                if (capabilities.torch && capabilities.torch.mode.includes('manual')) {
+                    const isTorchOn = track.getSettings().torch === true;
+                    await track.applyConstraints({ advanced: [{ torch: !isTorchOn }] });
+                    console.log(`Flashlight turned ${isTorchOn ? 'off' : 'on'}.`);
+                } else {
+                    console.log('Torch mode not supported.');
+                }
 
-        // function toggleFlashlight() {
-        //     if ('torch' in navigator) {
-        //         navigator.torch.enabled ? turnOffFlashlight() : turnOnFlashlight();
-        //     } else {
-        //         console.log('Torch API not supported on this device/browser.');
-        //     }
-        // }
-
-        // function turnOnFlashlight() {
-        //     navigator.torch.turnOn()
-        //         .then(() => console.log('Flashlight turned on.'))
-        //         .catch((error) => console.error('Error turning on flashlight:', error));
-        // }
-
-        // function turnOffFlashlight() {
-        //     navigator.torch.turnOff()
-        //         .then(() => console.log('Flashlight turned off.'))
-        //         .catch((error) => console.error('Error turning off flashlight:', error));
-        // }
-
-
-        function toggleFlashlight() {
-            if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
-                navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
-                    .then((stream) => {
-                        const track = stream.getVideoTracks()[0];
-                        const imageCapture = new ImageCapture(track);
-
-                        if (imageCapture) {
-                            const photoCapabilities = track.getCapabilities();
-
-                            if (photoCapabilities.torch && photoCapabilities.torch.includes('manual')) {
-                                // Toggle the torch mode
-                                const isTorchOn = photoCapabilities.torch.current === 'on';
-                                const newTorchMode = isTorchOn ? 'off' : 'on';
-
-                                track.applyConstraints({
-                                    advanced: [{ torch: newTorchMode }]
-                                }).then(() => {
-                                    console.log(`Flashlight turned ${newTorchMode}.`);
-                                    track.stop(); // Stop the video stream
-                                }).catch((error) => {
-                                    console.error(`Error turning flashlight ${newTorchMode}:`, error);
-                                    track.stop(); // Stop the video stream
-                                });
-                            } else {
-                                console.log('Torch mode not supported.');
-                                track.stop(); // Stop the video stream
-                            }
-                        }
-                    })
-                    .catch((error) => {
-                        console.error('Error accessing camera:', error);
-                    });
-            } else {
-                console.log('getUserMedia is not supported in this browser.');
+                track.stop();
+            } catch (error) {
+                console.error('Error accessing camera:', error);
             }
         }
-
-
 
         let config = {
             fps: 10,
@@ -126,13 +61,7 @@
         let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
 
         html5QrcodeScanner.render(onScanSuccess, onScanFail)
-
-
-
-
     </script>
-
-
 </body>
 
 </html>
