@@ -5,6 +5,14 @@ body {
     align-items: center;
 }
 
+h1 {
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+}
+
 #reader {
     width: 300px;
     padding: 20px !important;
@@ -12,9 +20,20 @@ body {
     border: dashed !important;
 }
 
-#reader__scan_region {
-    src: url('/unnamed.png') !important;
-}
+/* #reader__scan_region img {
+    display: none;
+
+
+} */
+
+/* #reader__scan_region {
+    min-width: 100px !important;
+    margin: auto;
+    background-image: url("/unnamed.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+} */
+
 
 #reader div:nth-child(1) img {
     display: none;
