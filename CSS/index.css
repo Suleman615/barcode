@@ -9,6 +9,9 @@ body {
     padding: 50px !important;
 }
 
+option {
+    padding: 5px 10px;
+}
 
 #reader div:nth-child(1) img {
     display: none;
@@ -33,10 +36,7 @@ body {
     font-size: 20px !important;
 }
 
-/* #qr-shaded-region {
-    margin: auto !important;
-    border-color: black !important;
-} */
+
 
 #result {
     display: block;
@@ -45,24 +45,14 @@ body {
     text-align: center;
 }
 
-/* 
-#reader__dashboard_section_csr {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
+
 
 span {
     display: block;
     margin-top: 10px;
 }
 
-/* video {
-    height: 300px;
-    min-width: 300px;
-    margin: auto;
-} */
+
 
 
 /* for image */
