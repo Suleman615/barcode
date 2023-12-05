@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="/CSS/index.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/CSS/index.css"> -->
     <title>Document</title>
 </head>
 
@@ -39,7 +39,7 @@
             qrbox: { width: 200, height: 200 },
             rememberLastUsedCamera: false,
             howTorchButtonIfSupported: true,
-            // supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
+            supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
         };
 
         let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
