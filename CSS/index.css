@@ -1,5 +1,5 @@
 body {
-
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,10 +38,10 @@ body {
     font-size: 20px !important;
 }
 
-#qr-shaded-region {
+/* #qr-shaded-region {
     margin: auto !important;
     border-color: black !important;
-}
+} */
 
 #result {
     display: block;
@@ -62,11 +62,11 @@ span {
     margin-top: 10px;
 }
 
-video {
+/* video {
     height: 300px;
     min-width: 300px;
     margin: auto;
-}
+} */
 
 
 /* for image */
