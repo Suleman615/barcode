@@ -18,7 +18,7 @@
     <main>
         <div style="width: 400px; height: 400px;" id="reader"></div>
         <div id="result"></div>
-        <button onclick=toggleFlash() id="toggleFlashlight">Toggle Flashlight</button>
+        <button onclick=toggleFlashlight() id="toggleFlashlight">Toggle Flashlight</button>
 
 
     </main>
@@ -49,10 +49,70 @@
             `
         }
 
-        function toggleFlash() {
-            html5QrcodeScanner.toggleTorch();
+        // function toggleFlash() {
+        //     html5QrcodeScanner.toggleTorch();
 
+        // }
+
+        // function toggleFlashlight() {
+        //     if ('torch' in navigator) {
+        //         navigator.torch.enabled ? turnOffFlashlight() : turnOnFlashlight();
+        //     } else {
+        //         console.log('Torch API not supported on this device/browser.');
+        //     }
+        // }
+
+        // function turnOnFlashlight() {
+        //     navigator.torch.turnOn()
+        //         .then(() => console.log('Flashlight turned on.'))
+        //         .catch((error) => console.error('Error turning on flashlight:', error));
+        // }
+
+        // function turnOffFlashlight() {
+        //     navigator.torch.turnOff()
+        //         .then(() => console.log('Flashlight turned off.'))
+        //         .catch((error) => console.error('Error turning off flashlight:', error));
+        // }
+
+
+        function toggleFlashlight() {
+            if ('mediaDevices' in navigator && 'getUserMedia' in navigator.mediaDevices) {
+                navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+                    .then((stream) => {
+                        const track = stream.getVideoTracks()[0];
+                        const imageCapture = new ImageCapture(track);
+
+                        if (imageCapture) {
+                            const photoCapabilities = track.getCapabilities();
+
+                            if (photoCapabilities.torch && photoCapabilities.torch.includes('manual')) {
+                                // Toggle the torch mode
+                                const isTorchOn = photoCapabilities.torch.current === 'on';
+                                const newTorchMode = isTorchOn ? 'off' : 'on';
+
+                                track.applyConstraints({
+                                    advanced: [{ torch: newTorchMode }]
+                                }).then(() => {
+                                    console.log(`Flashlight turned ${newTorchMode}.`);
+                                    track.stop(); // Stop the video stream
+                                }).catch((error) => {
+                                    console.error(`Error turning flashlight ${newTorchMode}:`, error);
+                                    track.stop(); // Stop the video stream
+                                });
+                            } else {
+                                console.log('Torch mode not supported.');
+                                track.stop(); // Stop the video stream
+                            }
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error accessing camera:', error);
+                    });
+            } else {
+                console.log('getUserMedia is not supported in this browser.');
+            }
         }
+
 
 
         let config = {
