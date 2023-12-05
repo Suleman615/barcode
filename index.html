@@ -13,12 +13,13 @@
     <main>
         <div id="reader"></div>
         <div id="result"></div>
-        <!-- <button onclick="toggleFlash()" id="toggleFlashlight">Toggle Flashlight</button> -->
+        <button onclick="toggleFlash()" id="toggleFlashlight">Toggle Flashlight</button>
     </main>
 
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>
         function onScanSuccess(decodedText, decodedResult) {
+
             document.getElementById('result').innerHTML = `
             <p>${decodedText}</p>
             `
@@ -26,9 +27,8 @@
         }
 
         function onScanFail(results) {
-            console.log('No match found');
             document.getElementById('result').innerHTML = `
-            <p>${results}</p>
+            <p>Nothing Found</p>
             `
         }
 
@@ -41,6 +41,10 @@
         };
 
         let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
+
+        function toggleFlash() {
+            html5QrcodeScanner.toggleTorch()
+        }
 
         html5QrcodeScanner.render(onScanSuccess, onScanFail)
     </script>
