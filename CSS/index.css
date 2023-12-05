@@ -1,0 +1,53 @@
+body {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#reader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 400px;
+}
+
+
+#reader div:nth-child(1) img {
+    display: none;
+    height: 30px;
+    background-color: red;
+    padding: 4px;
+}
+
+#reader div:nth-child(1) button {
+    cursor: pointer;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 6px 20px;
+    font-weight: bold;
+}
+
+#reader__header_message {
+    padding: 10px !important;
+    font-size: 20px !important;
+}
+
+#result {
+    display: block;
+    position: fixed;
+    width: 500px;
+}
+
+video {
+    height: 300px;
+}
+
+#html5-qrcode-button-camera-stop {}
+
+/* for image */
+/* #reader div:nth-of-type(2) {
+    display: none;
+} */

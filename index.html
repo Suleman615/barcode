@@ -4,14 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="/CSS/index.css">
     <title>Document</title>
 </head>
 
 <body>
     <main>
-        <div style="width: 400px; height: 400px;" id="reader"></div>
+        <div id="reader"></div>
         <div id="result"></div>
-        <button onclick="toggleFlash()" id="toggleFlashlight">Toggle Flashlight</button>
+        <!-- <button onclick="toggleFlash()" id="toggleFlashlight">Toggle Flashlight</button> -->
     </main>
 
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
@@ -28,26 +30,6 @@
             document.getElementById('result').innerHTML = `
             <p>${results}</p>
             `
-        }
-
-        async function toggleFlash() {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
-                const track = stream.getVideoTracks()[0];
-
-                const capabilities = track.getCapabilities();
-                if (capabilities.torch && capabilities.torch.mode.includes('manual')) {
-                    const isTorchOn = track.getSettings().torch === true;
-                    await track.applyConstraints({ advanced: [{ torch: !isTorchOn }] });
-                    console.log(`Flashlight turned ${isTorchOn ? 'off' : 'on'}.`);
-                } else {
-                    console.log('Torch mode not supported.');
-                }
-
-                track.stop();
-            } catch (error) {
-                console.error('Error accessing camera:', error);
-            }
         }
 
         let config = {
