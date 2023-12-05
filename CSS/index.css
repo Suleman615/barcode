@@ -28,22 +28,23 @@ body {
 
 
 
-/* #reader__header_message {
+#reader__header_message {
     padding: 10px !important;
     font-size: 20px !important;
-} */
+}
 
 /* #qr-shaded-region {
     margin: auto !important;
     border-color: black !important;
 } */
 
-/* #result {
+#result {
     display: block;
     max-width: 80vw;
     margin: auto;
     text-align: center;
-} */
+}
+
 /* 
 #reader__dashboard_section_csr {
     display: flex;
