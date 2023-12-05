@@ -6,17 +6,15 @@ body {
 }
 
 #reader {
-
-    width: 500px;
-    height: 400px;
+    padding: 50px !important;
 }
 
 
-/* #reader div:nth-child(1) img {
+#reader div:nth-child(1) img {
     display: none;
     height: 30px;
     padding: 4px;
-} */
+}
 
 /* #reader div:nth-child(1) button {
     cursor: pointer;
