@@ -10,11 +10,15 @@ async function toggleFlashlight() {
             await track.applyConstraints({ advanced: [{ torch: !isTorchOn }] });
             console.log(`Flashlight turned ${isTorchOn ? 'off' : 'on'}.`);
         } else {
+
+            document.getElementById('answer').innerHTML = 'Not Suppotted'
             console.log('Torch mode not supported or cannot be controlled manually.');
         }
 
         track.stop();
     } catch (error) {
+        document.getElementById('answer').innerHTML = error
+
         console.error('Error accessing camera:', error);
     }
 }
