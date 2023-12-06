@@ -5,6 +5,26 @@ const gotoHome = () => {
 }
 
 
+function toggleFlashlight() {
+    if ('torch' in navigator) {
+        navigator.torch.enabled ? turnOffFlashlight() : turnOnFlashlight();
+    } else {
+        console.log('Torch API not supported on this device/browser.');
+    }
+}
+
+function turnOnFlashlight() {
+    navigator.torch.turnOn()
+        .then(() => console.log('Flashlight turned on.'))
+        .catch((error) => console.error('Error turning on flashlight:', error));
+}
+
+function turnOffFlashlight() {
+    navigator.torch.turnOff()
+        .then(() => console.log('Flashlight turned off.'))
+        .catch((error) => console.error('Error turning off flashlight:', error));
+}
+
 
 function onScanSuccess(decodedText, decodedResult) {
 
