@@ -15,7 +15,7 @@ async function toggleFlashlight() {
 
         track.stop();
     } catch (error) {
-        document.getElementById('answer').innerText = "Error"
+        document.getElementById('answer').innerText = error
 
         console.error('Error accessing camera:', error);
     }
