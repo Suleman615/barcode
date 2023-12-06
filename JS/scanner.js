@@ -1,5 +1,6 @@
 
-function gotoHome() {
+
+const gotoHome = () => {
     window.location.assign('/index.html')
 }
 
@@ -10,8 +11,8 @@ function onScanSuccess(decodedText, decodedResult) {
     document.getElementById('result').innerHTML = `
         <p>${decodedText}</p>
         `
+    window.location.assign("/index.html")
 
-    window.location.assign("/index.js")
     html5QrcodeScanner.clear();
 }
 
