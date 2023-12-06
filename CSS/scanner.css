@@ -5,10 +5,10 @@ body {
     align-items: center;
 }
 
-#html5-qrcode-select-camera {
+/* #html5-qrcode-select-camera {
     background-color: aqua !important;
     font-size: 30px !important;
-}
+} */
 
 .header {
     display: flex;
