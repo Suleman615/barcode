@@ -32,10 +32,10 @@ let config = {
     supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
 };
 
+const deviceId = { exact: 'environment' };
+
 let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
 
-html5QrcodeScanner.render(onScanSuccess, onScanFail)
+html5QrcodeScanner.render(onScanSuccess, onScanFail, deviceId)
 
 
-document.getElementById('answer').innerText = document.getElementById('html5-qrcode-select-camera')
-console.log()
