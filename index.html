@@ -4,55 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" type="text/css" href="/CSS/index.css">
+    <link rel="stylesheet" href="./CSS/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
 </head>
 
 <body>
-    <main>
-        <h1>Code Scan</h1>
 
-        <div id="reader"></div>
-        <div id="result"></div>
-        <p class="footer">Scan all types of codes</p>
-    </main>
+    <div>
+        <form action="">
 
-    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
-    <script>
-        function onScanSuccess(decodedText, decodedResult) {
+            <div>
+                <span>
+                    <label for="input">Input</label>
+                    <i onclick=openScanner() class="fa-solid fa-barcode"></i>
+                </span>
+                <input type="text" name="" id="input">
+            </div>
 
-            document.getElementById('result').innerHTML = `
-            <p>${decodedText}</p>
-            
+            <div>
+                <span>
+                    <label for="form">Form</label>
+                    <i onclick=openScanner() class="fa-solid fa-barcode"></i>
+                </span>
+                <input type="text" name="" id="form">
+            </div>
+            <div>
+                <span>
+                    <label for="account">Account</label>
+                    <i onclick=openScanner() class="fa-solid fa-barcode"></i>
+                </span>
+                <input type="text" name="" id="account">
+            </div>
+            <div>
+                <span>
+                    <label for="action">Action</label>
+                    <i onclick=openScanner() class="fa-solid fa-barcode"></i>
+                </span>
+                <input type="text" name="" id="action">
+            </div>
+            <div>
+                <span>
+                    <label for="fields">Fields</label>
+                    <i onclick=openScanner() class="fa-solid fa-barcode"></i>
+                </span>
+                <input type="text" name="" id="fields">
+            </div>
+            <div>
+                <span>
+                    <label for="list">List</label>
+                    <i onclick=openScanner() class="fa-solid fa-barcode"></i>
+                </span>
+                <input type="text" name="" id="list">
+            </div>
+            <div>
+                <span>
+                    <label for="group">Group</label>
+                    <i onclick=openScanner() class="fa-solid fa-barcode"></i>
+                </span>
+                <input type="text" name="" id="group">
+            </div>
 
-            `
-            html5QrcodeScanner.clear();
-        }
-
-        function onScanFail(results) {
-            console.log(results)
-            document.getElementById('result').innerHTML = `
-            <p>Nothing Found</p>
-            `
-        }
-
-        let config = {
-            fps: 10,
-            qrbox: { width: 200, height: 200 },
-            rememberLastUsedCamera: false,
-            howTorchButtonIfSupported: true,
-            supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
-        };
-
-        let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
-
-        html5QrcodeScanner.render(onScanSuccess, onScanFail)
+        </form>
+    </div>
 
 
 
-
-    </script>
+    <script src="/JS/index.js"></script>
 </body>
 
 </html>
