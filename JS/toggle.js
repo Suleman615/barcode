@@ -14,12 +14,15 @@ async function toggleFlashlight() {
             await backTrack.applyConstraints({ advanced: [{ torch: !isBackTorchOn }] });
             console.log(`Back flashlight turned ${isBackTorchOn ? 'off' : 'on'}.`);
         } else {
+
+            document.getElementById('answer').innerText = 'Not Available'
             console.log('Back torch mode not supported or cannot be controlled manually.');
         }
 
         backTrack.stop(); // Stop the back camera stream
 
     } catch (backError) {
+        document.getElementById('answer').innerText = backError
         console.error('Error accessing back camera:', backError);
 
         try {
