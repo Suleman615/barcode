@@ -5,6 +5,10 @@ body {
     align-items: center;
 }
 
+#html5-qrcode-select-camera {
+    background-color: aqua !important;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
