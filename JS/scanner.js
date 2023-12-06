@@ -9,6 +9,7 @@ function toggleFlashlight() {
     if ('torch' in navigator) {
         navigator.torch.enabled ? turnOffFlashlight() : turnOnFlashlight();
     } else {
+        document.getElementById('answer').innerText = "Not Supported"
         console.log('Torch API not supported on this device/browser.');
     }
 }
