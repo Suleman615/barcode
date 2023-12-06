@@ -1,6 +1,6 @@
 async function toggleFlashlight() {
     try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } });
         const track = stream.getVideoTracks()[0];
 
         const capabilities = track.getCapabilities();
