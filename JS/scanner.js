@@ -37,3 +37,5 @@ let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
 html5QrcodeScanner.render(onScanSuccess, onScanFail)
 
 
+document.getElementById('answer').innerText = document.getElementById('html5-qrcode-select-camera')
+console.log()
