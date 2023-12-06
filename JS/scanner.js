@@ -7,16 +7,18 @@ const gotoHome = () => {
 
 
 
-
 function onScanSuccess(decodedText, decodedResult) {
 
     document.getElementById('result').innerHTML = `
         <p>${decodedText}</p>
         `
+    localStorage.setItem('code', decodedText)
     window.location.assign("/index.html")
+
 
     html5QrcodeScanner.clear();
 }
+
 
 
 function onScanFail(results) {
