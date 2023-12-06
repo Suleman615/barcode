@@ -10,6 +10,8 @@ function onScanSuccess(decodedText, decodedResult) {
     document.getElementById('result').innerHTML = `
         <p>${decodedText}</p>
         `
+
+    window.location.assign("/index.js")
     html5QrcodeScanner.clear();
 }
 
