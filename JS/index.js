@@ -1,6 +1,7 @@
 
 
 
+
 function openScanner(fieldName) {
     localStorage.setItem('field', fieldName)
     window.location.assign('/scanner.html')

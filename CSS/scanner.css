@@ -5,10 +5,7 @@ body {
     align-items: center;
 }
 
-/* #html5-qrcode-select-camera {
-    background-color: aqua !important;
-    font-size: 30px !important;
-} */
+
 
 .header {
     display: flex;
@@ -23,7 +20,7 @@ body {
 
 .flash {
     margin-right: 10px;
-    /* display: none; */
+    display: none;
 }
 
 h1 {
@@ -41,19 +38,6 @@ h1 {
     border: dashed !important;
 }
 
-/* #reader__scan_region img {
-    display: none;
-
-
-} */
-
-/* #reader__scan_region {
-    min-width: 100px !important;
-    margin: auto;
-    background-image: url("/unnamed.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-} */
 
 
 #reader div:nth-child(1) img {
@@ -98,7 +82,8 @@ span {
 
 
 
-/* for image */
-/* #reader div:nth-of-type(2) {
-    display: none;
-} */
+@media only screen and (max-width: 600px) {
+    .flash {
+        display: inline-block;
+    }
+}
