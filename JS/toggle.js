@@ -51,47 +51,38 @@
 
 
 
-async function toggleFlashlight() {
-    try {
-        // Check if the device supports the torch
-        if (window.device && device.model && device.model.includes("iPhone")) {
-            // Use the Camera API
-            const camera = new Camera();
-            camera.getCameraCapabilities()
-                .then((capabilities) => {
-                    if (capabilities.torch) {
-                        // Torch is supported, turn it on
-                        camera.setTorchMode(true)
-                            .then(() => {
-                                console.log('Torch is on');
-                            })
-                            .catch((err) => {
-                                document.getElementById('answer').innerText = 'Error turning on torch:'
-
-                                console.error('Error turning on torch:', err);
-                            });
-                    } else {
-                        document.getElementById('answer').innerText = 'Torch is not supported on this device'
-
-                        console.error('Torch is not supported on this device');
-                    }
-                })
-                .catch((err) => {
-                    document.getElementById('answer').innerText = 'Error getting camera capabilities:'
-
-                    console.error('Error getting camera capabilities:', err);
-                });
-        } else {
-            document.getElementById('answer').innerText = 'Torch API not available'
-            console.error('Torch API not available');
-        }
-
-
-
-
-
-    } catch (error) {
-        document.getElementById('answer').innerText = error;
-        console.error('Error accessing camera:', error);
+function toggleFlashlight() {
+    if ('torch' in navigator) {
+        // For Android
+        navigator.torch.request()
+            .then(() => {
+                console.log('Torch is toggled');
+            })
+            .catch((err) => {
+                console.error('Error toggling torch:', err);
+            });
+    } else if (window.device && device.model && device.model.includes("iPhone")) {
+        // For iOS
+        const camera = new Camera();
+        camera.getCameraCapabilities()
+            .then((capabilities) => {
+                if (capabilities.torch) {
+                    camera.toggleTorch()
+                        .then(() => {
+                            console.log('Torch is toggled');
+                        })
+                        .catch((err) => {
+                            console.error('Error toggling torch:', err);
+                        });
+                } else {
+                    console.error('Torch is not supported on this device');
+                }
+            })
+            .catch((err) => {
+                console.error('Error getting camera capabilities:', err);
+            });
+    } else {
+        console.error('Flashlight API not available on this device');
     }
 }
+
