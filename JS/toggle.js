@@ -66,16 +66,23 @@ async function toggleFlashlight() {
                                 console.log('Torch is on');
                             })
                             .catch((err) => {
+                                document.getElementById('answer').innerText = 'Error turning on torch:'
+
                                 console.error('Error turning on torch:', err);
                             });
                     } else {
+                        document.getElementById('answer').innerText = 'Torch is not supported on this device'
+
                         console.error('Torch is not supported on this device');
                     }
                 })
                 .catch((err) => {
+                    document.getElementById('answer').innerText = 'Error getting camera capabilities:'
+
                     console.error('Error getting camera capabilities:', err);
                 });
         } else {
+            document.getElementById('answer').innerText = 'Torch API not available'
             console.error('Torch API not available');
         }
 
