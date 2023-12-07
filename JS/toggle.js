@@ -53,39 +53,36 @@
 
 async function toggleFlashlight() {
     try {
-        const devices = await navigator.mediaDevices.enumerateDevices();
-
-        // Find all video input devices (cameras)
-        const videoDevices = devices.filter(device => device.kind === 'videoinput');
-
-        if (videoDevices.length > 0) {
-            for (const videoDevice of videoDevices) {
-                try {
-                    const stream = await navigator.mediaDevices.getUserMedia({
-                        video: { deviceId: { exact: videoDevice.deviceId } },
-                    });
-
-                    const track = stream.getVideoTracks()[0];
-
-                    // Check torch capabilities for the camera
-                    const capabilities = track.getCapabilities();
-
-                    if (capabilities.torch === true) {
-                        // Attempt to toggle the flashlight without applying constraints
-                        await track.applyConstraints({ advanced: [{ torch: !capabilities.torch }] });
-                        console.log(`Flashlight for camera ${videoDevice.label || videoDevice.deviceId} turned ${capabilities.torch ? 'off' : 'on'}.`);
+        // Check if the device supports the torch
+        if (window.device && device.model && device.model.includes("iPhone")) {
+            // Use the Camera API
+            const camera = new Camera();
+            camera.getCameraCapabilities()
+                .then((capabilities) => {
+                    if (capabilities.torch) {
+                        // Torch is supported, turn it on
+                        camera.setTorchMode(true)
+                            .then(() => {
+                                console.log('Torch is on');
+                            })
+                            .catch((err) => {
+                                console.error('Error turning on torch:', err);
+                            });
                     } else {
-                        console.log(`Flashlight for camera ${videoDevice.label || videoDevice.deviceId} not supported or cannot be controlled manually.`);
+                        console.error('Torch is not supported on this device');
                     }
-
-                    track.stop(); // Stop the camera stream
-                } catch (cameraError) {
-                    console.error(`Error accessing camera ${videoDevice.label || videoDevice.deviceId}:`, cameraError);
-                }
-            }
+                })
+                .catch((err) => {
+                    console.error('Error getting camera capabilities:', err);
+                });
         } else {
-            console.log('No cameras found.');
+            console.error('Torch API not available');
         }
+
+
+
+
+
     } catch (error) {
         document.getElementById('answer').innerText = error;
         console.error('Error accessing camera:', error);
