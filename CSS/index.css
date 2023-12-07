@@ -5,6 +5,11 @@ body {
     align-items: center;
 }
 
+
+.scancode {
+    display: none;
+}
+
 h1 {
     text-align: center;
 }

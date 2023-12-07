@@ -5,7 +5,9 @@ body {
     align-items: center;
 }
 
-
+.inputmanually {
+    display: none;
+}
 
 .header {
     display: flex;
