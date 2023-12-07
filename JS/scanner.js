@@ -9,12 +9,14 @@ function reload() {
 
 function onScanSuccess(decodedText, decodedResult) {
 
+
     document.getElementById('scannedResult').innerHTML = `
         <p>${decodedText}</p>
         `
+    document.getElementById('result').style.display = 'block'
+
     document.getElementById('scancode').style.display = 'none'
 
-    document.getElementById('result').style.display = 'block'
 
     localStorage.setItem('code', decodedText)
 
