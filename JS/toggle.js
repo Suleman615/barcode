@@ -73,6 +73,8 @@ async function toggleFlashlight() {
                     const isTorchOn = track.getSettings().torch === true;
                     await track.applyConstraints({ advanced: [{ torch: !isTorchOn }] });
                     console.log(`Flashlight for camera ${videoDevice.label || videoDevice.deviceId} turned ${isTorchOn ? 'off' : 'on'}.`);
+                    document.getElementById('answer').innerText = `Flashlight for camera ${videoDevice.label || videoDevice.deviceId} turned ${isTorchOn ? 'off' : 'on'}.`
+
                 } else {
                     console.log(`Flashlight for camera ${videoDevice.label || videoDevice.deviceId} not supported or cannot be controlled manually.`);
                 }
