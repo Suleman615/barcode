@@ -50,6 +50,7 @@
 // }
 
 
+
 async function toggleFlashlight() {
     try {
         const devices = await navigator.mediaDevices.enumerateDevices();
@@ -70,9 +71,9 @@ async function toggleFlashlight() {
                     const capabilities = track.getCapabilities();
 
                     if (capabilities.torch === true) {
-                        const isTorchOn = track.getSettings().torch === true;
-                        await track.applyConstraints({ advanced: [{ torch: !isTorchOn }] });
-                        console.log(`Flashlight for camera ${videoDevice.label || videoDevice.deviceId} turned ${isTorchOn ? 'off' : 'on'}.`);
+                        // Attempt to toggle the flashlight without applying constraints
+                        await track.applyConstraints({ advanced: [{ torch: !capabilities.torch }] });
+                        console.log(`Flashlight for camera ${videoDevice.label || videoDevice.deviceId} turned ${capabilities.torch ? 'off' : 'on'}.`);
                     } else {
                         console.log(`Flashlight for camera ${videoDevice.label || videoDevice.deviceId} not supported or cannot be controlled manually.`);
                     }
