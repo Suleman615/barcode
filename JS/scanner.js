@@ -7,6 +7,7 @@ const gotoHome = () => {
 
 
 
+
 function onScanSuccess(decodedText, decodedResult) {
 
     document.getElementById('result').innerHTML = `
@@ -34,10 +35,11 @@ let config = {
     supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
 };
 
-const deviceId = { exact: 'environment' };
 
 let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
 
-html5QrcodeScanner.render(onScanSuccess, onScanFail, deviceId)
+html5QrcodeScanner.render(onScanSuccess, onScanFail)
 
+let msg = document.getElementById('reader__header_message').innerText
 
+msg.includes('denied') ? window.location.assign('/index.html') : console.log('done')
