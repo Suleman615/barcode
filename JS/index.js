@@ -11,10 +11,14 @@ if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
                 console.log('Camera is available');
                 document.getElementById('scancode').style.display = 'block'
                 document.getElementById('inputmanually').style.display = 'none'
+                document.getElementById('result').style.display = 'none'
+
 
             } else {
                 document.getElementById('scancode').style.display = 'none'
                 document.getElementById('inputmanually').style.display = 'block'
+                document.getElementById('result').style.display = 'none'
+
             }
         })
         .catch(function (error) {
@@ -27,18 +31,10 @@ if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
 
 
 
-function openScanner(fieldName) {
-    localStorage.setItem('field', fieldName)
-    window.location.assign('/scanner.html')
-}
 
 
-let field = localStorage.getItem('field')
-
-let scannedCode = localStorage.getItem('code')
 
 
-document.getElementById(field).value = scannedCode
 
 
 
