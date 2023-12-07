@@ -1,13 +1,15 @@
 
 
-
+function reload() {
+    window.location.assign('/index.js')
+}
 
 
 
 
 function onScanSuccess(decodedText, decodedResult) {
 
-    document.getElementById('result').innerHTML = `
+    document.getElementById('scannedResult').innerHTML = `
         <p>${decodedText}</p>
         `
     document.getElementById('scancode').style.display = 'none'
