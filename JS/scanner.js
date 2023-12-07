@@ -1,22 +1,18 @@
 
 
-function reload() {
-    window.location.assign('/index.js')
-}
+
 
 
 
 
 function onScanSuccess(decodedText, decodedResult) {
 
-
-    document.getElementById('scannedResult').innerHTML = `
+    document.getElementById('result').innerHTML = `
         <p>${decodedText}</p>
         `
-    document.getElementById('result').style.display = 'block'
-
     document.getElementById('scancode').style.display = 'none'
 
+    document.getElementById('result').style.display = 'block'
 
     localStorage.setItem('code', decodedText)
 
