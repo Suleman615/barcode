@@ -50,7 +50,6 @@
 // }
 
 
-
 async function toggleFlashlight() {
     try {
         const devices = await navigator.mediaDevices.enumerateDevices();
@@ -60,26 +59,28 @@ async function toggleFlashlight() {
 
         if (videoDevices.length > 0) {
             for (const videoDevice of videoDevices) {
-                const stream = await navigator.mediaDevices.getUserMedia({
-                    video: { deviceId: { exact: videoDevice.deviceId } },
-                });
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({
+                        video: { deviceId: { exact: videoDevice.deviceId } },
+                    });
 
-                const track = stream.getVideoTracks()[0];
+                    const track = stream.getVideoTracks()[0];
 
-                // Check torch capabilities for the camera
-                const capabilities = track.getCapabilities();
+                    // Check torch capabilities for the camera
+                    const capabilities = track.getCapabilities();
 
-                if (capabilities.torch === true) {
-                    const isTorchOn = track.getSettings().torch === true;
-                    await track.applyConstraints({ advanced: [{ torch: !isTorchOn }] });
-                    console.log(`Flashlight for camera ${videoDevice.label || videoDevice.deviceId} turned ${isTorchOn ? 'off' : 'on'}.`);
-                    document.getElementById('answer').innerText = `Flashlight for camera ${videoDevice.label || videoDevice.deviceId} turned ${isTorchOn ? 'off' : 'on'}.`
+                    if (capabilities.torch === true) {
+                        const isTorchOn = track.getSettings().torch === true;
+                        await track.applyConstraints({ advanced: [{ torch: !isTorchOn }] });
+                        console.log(`Flashlight for camera ${videoDevice.label || videoDevice.deviceId} turned ${isTorchOn ? 'off' : 'on'}.`);
+                    } else {
+                        console.log(`Flashlight for camera ${videoDevice.label || videoDevice.deviceId} not supported or cannot be controlled manually.`);
+                    }
 
-                } else {
-                    console.log(`Flashlight for camera ${videoDevice.label || videoDevice.deviceId} not supported or cannot be controlled manually.`);
+                    track.stop(); // Stop the camera stream
+                } catch (cameraError) {
+                    console.error(`Error accessing camera ${videoDevice.label || videoDevice.deviceId}:`, cameraError);
                 }
-
-                track.stop(); // Stop the camera stream
             }
         } else {
             console.log('No cameras found.');
