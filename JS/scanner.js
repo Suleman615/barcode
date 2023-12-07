@@ -1,8 +1,5 @@
 
 
-const gotoHome = () => {
-    window.location.assign('/index.html')
-}
 
 
 
@@ -39,7 +36,3 @@ let config = {
 let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
 
 html5QrcodeScanner.render(onScanSuccess, onScanFail)
-
-let msg = document.getElementById('reader__header_message').innerText
-
-msg.includes('denied') ? window.location.assign('/index.html') : console.log('done')
