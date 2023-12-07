@@ -11,7 +11,6 @@ function onScanSuccess(decodedText, decodedResult) {
         <p>${decodedText}</p>
         `
     localStorage.setItem('code', decodedText)
-    window.location.assign("/index.html")
 
 
     html5QrcodeScanner.clear();
