@@ -54,7 +54,7 @@
 function toggleFlashlight() {
 
 
-    const constraintList = document.querySelector(".answer");
+    const constraintList = document.querySelector("#answer");
     const supportedConstraints = navigator.mediaDevices.getSupportedConstraints();
 
     for (const constraint of Object.keys(supportedConstraints)) {
