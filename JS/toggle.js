@@ -22,7 +22,6 @@ async function toggleFlashlight() {
         backTrack.stop(); // Stop the back camera stream
 
     } catch (backError) {
-        document.getElementById('answer').innerText = backError
         console.error('Error accessing back camera:', backError);
 
         try {
