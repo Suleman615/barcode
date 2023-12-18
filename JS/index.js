@@ -44,7 +44,10 @@ function onScanSuccess(decodedText, decodedResult) {
     document.getElementById('result').innerHTML = `
         <p>${decodedText}</p>
         `
+
     document.getElementById('scancode').style.display = 'none'
+    document.getElementById('inputmanually').style.display = 'none'
+    document.getElementById('input').value = decodedText
 
     document.getElementById('result').style.display = 'block'
 
