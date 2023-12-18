@@ -46,6 +46,7 @@ body {
 }
 
 #reader div:nth-child(1) button {
+    margin: auto;
     cursor: pointer;
     border-width: 1px;
     border-radius: 10px;
