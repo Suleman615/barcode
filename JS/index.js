@@ -76,13 +76,13 @@ function scanCode(inputField) {
     let config = {
         fps: 10,
         qrbox: { width: 200, height: 200 },
-        rememberLastUsedCamera: false,
+        rememberLastUsedCamera: true,
         howTorchButtonIfSupported: true,
         supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
     };
 
 
-    let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
+    let html5QrcodeScanner = new Html5QrcodeScanner("reader", config);
 
     html5QrcodeScanner.render(onScanSuccess, onScanFail)
 
