@@ -1,9 +1,7 @@
 
 
 async function toggleFlashlight() {
-    let torchaccess = 'torch' in navigator;
 
-    // if (torchaccess) {
     try {
         // Try to access the back camera
         const backStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
@@ -49,9 +47,7 @@ async function toggleFlashlight() {
             console.error('Error accessing front camera:', frontError);
         }
     }
-    // } else {
-    //     console.log("no torch")
-    // }
+
 }
 
 
