@@ -61,7 +61,7 @@ function onScanFail(results) {
 }
 
 let config = {
-    fps: 10,
+    fps: 20,
     qrbox: { width: 200, height: 200 },
     rememberLastUsedCamera: false,
     howTorchButtonIfSupported: true,

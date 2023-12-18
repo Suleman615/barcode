@@ -55,16 +55,3 @@ async function toggleFlashlight() {
 }
 
 
-
-// function toggleFlashlight() {
-
-
-//     const constraintList = document.querySelector("#answer");
-//     const supportedConstraints = navigator.mediaDevices.getSupportedConstraints();
-
-//     for (const constraint of Object.keys(supportedConstraints)) {
-//         const elem = document.createElement("li");
-//         elem.innerHTML = `<code>${constraint}</code>`;
-//         constraintList.appendChild(elem);
-//     }
-// }
