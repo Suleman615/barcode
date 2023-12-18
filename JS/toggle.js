@@ -54,28 +54,25 @@
 
 
 
-
-
 let flashlightOn = false;
-let videoStream;
 
 async function toggleFlashlight() {
     try {
-        if (flashlightOn) {
-            // Turn off the flashlight
-            if (videoStream) {
-                const tracks = videoStream.getTracks();
-                tracks.forEach(track => track.stop());
+        const torch = navigator.torch;
+        if (torch) {
+            if (flashlightOn) {
+                await torch.turnOff();
                 flashlightOn = false;
                 console.log("Flashlight turned off.");
+            } else {
+                await torch.turnOn();
+                flashlightOn = true;
+                console.log("Flashlight turned on.");
             }
         } else {
-            // Turn on the flashlight
-            videoStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
-            flashlightOn = true;
-            console.log("Flashlight turned on.");
+            console.error("Torch not available on this device.");
         }
     } catch (error) {
-        console.error("Error accessing the camera:", error);
+        console.error("Error toggling flashlight:", error);
     }
 }
