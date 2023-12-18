@@ -22,6 +22,8 @@ async function toggleFlashlight() {
         backTrack.stop(); // Stop the back camera stream
 
     } catch (backError) {
+        document.getElementById('answer').innerText = 'Error  1'
+
         console.error('Error accessing back camera:', backError);
 
         try {
@@ -43,6 +45,8 @@ async function toggleFlashlight() {
             frontTrack.stop(); // Stop the front camera stream
 
         } catch (frontError) {
+            document.getElementById('answer').innerText = 'Error'
+
             console.error('Error accessing front camera:', frontError);
         }
     }
