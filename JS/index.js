@@ -5,7 +5,7 @@ document.getElementById('inputmanually').style.display = 'block'
 document.getElementById('result').style.display = 'none'
 
 
-function getInput() {
+function getInput(field) {
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         // Attempt to access the camera without displaying the stream
         navigator.mediaDevices.getUserMedia({ video: true })
@@ -18,7 +18,7 @@ function getInput() {
                 stream.getTracks().forEach(track => track.stop());
 
 
-                scanCode()
+                scanCode(field)
             })
             .catch(function (error) {
                 // Camera is not available or permission denied
@@ -44,7 +44,7 @@ function getInput() {
 // *******************Scanner functions**********************
 
 
-function scanCode() {
+function scanCode(inputField) {
 
 
 
@@ -57,7 +57,7 @@ function scanCode() {
 
         document.getElementById('scancode').style.display = 'none'
         document.getElementById('inputmanually').style.display = 'block'
-        document.getElementById('input').value = decodedText
+        document.getElementById(inputField).value = decodedText
 
         // document.getElementById('result').style.display = 'block'
 
