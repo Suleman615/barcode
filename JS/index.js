@@ -75,7 +75,7 @@ function scanCode(inputField) {
 
     let config = {
         fps: 10,
-        qrbox: { width: 200, height: 400 },
+        qrbox: { width: 200, height: 200 },
         rememberLastUsedCamera: true,
         howTorchButtonIfSupported: true,
         supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
