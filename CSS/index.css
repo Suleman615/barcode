@@ -137,4 +137,8 @@ form div {
     .flash {
         display: block;
     }
+
+    #reader {
+        width: 90% !important;
+    }
 }
