@@ -32,7 +32,7 @@ body {
 
 #reader {
     width: 300px;
-    /* padding: 20px !important; */
+    padding: 20px !important;
     border-radius: 20px;
     border: dashed !important;
 }
