@@ -32,7 +32,7 @@ body {
 
 #reader {
     width: 300px;
-    /* padding: 20px !important; */
+    padding: 10px !important;
     border-radius: 20px;
     border: dashed !important;
 }
@@ -139,6 +139,6 @@ form div {
     }
 
     #reader {
-        width: auto !important;
+        width: 100% !important;
     }
 }
