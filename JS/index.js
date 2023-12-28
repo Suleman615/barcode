@@ -2,7 +2,6 @@
 
 document.getElementById('scancode').style.display = 'none'
 document.getElementById('inputmanually').style.display = 'block'
-document.getElementById('result').style.display = 'none'
 
 
 function getInput(field) {
@@ -25,7 +24,6 @@ function getInput(field) {
                 console.error('No camera found:', error);
                 document.getElementById('scancode').style.display = 'none'
                 document.getElementById('inputmanually').style.display = 'block'
-                document.getElementById('result').style.display = 'none'
             });
     } else {
         // getUserMedia is not supported
@@ -57,9 +55,6 @@ function scanCode(inputField) {
         document.getElementById('inputmanually').style.display = 'block'
         document.getElementById(inputField).value = decodedText
 
-
-
-
         html5QrcodeScanner.clear();
     }
 
@@ -79,7 +74,7 @@ function scanCode(inputField) {
     };
 
 
-    let html5QrcodeScanner = new Html5QrcodeScanner("reader", config);
+    let html5QrcodeScanner = new Html5QrcodeScanner("reader", config, false);
 
     html5QrcodeScanner.render(onScanSuccess, onScanFail)
 
