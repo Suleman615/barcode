@@ -1,4 +1,4 @@
-/* body {
+body {
     min-height: 80vh;
     display: flex;
     justify-content: center;
@@ -134,11 +134,11 @@ form div {
 
     } */
 
-/* .flash {
+    .flash {
         display: block;
     }
 
     #reader {
-        width: auto !important;
+        width: a !important;
     }
-} */
+}
