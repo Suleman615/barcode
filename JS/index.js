@@ -49,8 +49,6 @@ function scanCode(inputField) {
 
     function onScanSuccess(decodedText, decodedResult) {
 
-
-
         document.getElementById('scancode').style.display = 'none'
         document.getElementById('inputmanually').style.display = 'block'
         document.getElementById(inputField).value = decodedText
