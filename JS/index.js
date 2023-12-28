@@ -51,15 +51,12 @@ function scanCode(inputField) {
 
     function onScanSuccess(decodedText, decodedResult) {
 
-        // document.getElementById('result').innerHTML = `
-        //     <p>${decodedText}</p>
-        //     `
+
 
         document.getElementById('scancode').style.display = 'none'
         document.getElementById('inputmanually').style.display = 'block'
         document.getElementById(inputField).value = decodedText
 
-        // document.getElementById('result').style.display = 'block'
 
 
 
@@ -74,10 +71,10 @@ function scanCode(inputField) {
     }
 
     let config = {
-        fps: 10,
+        fps: 2,
         qrbox: { width: 200, height: 200 },
-        rememberLastUsedCamera: true,
-        howTorchButtonIfSupported: true,
+        rememberLastUsedCamera: false,
+        // howTorchButtonIfSupported: true,
         supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
     };
 

@@ -15,7 +15,6 @@ async function toggleFlashlight() {
             console.log(`Back flashlight turned ${isBackTorchOn ? 'off' : 'on'}.`);
         } else {
 
-            document.getElementById('answer').innerText = 'Not Available'
             console.log('Back torch mode not supported or cannot be controlled manually.');
         }
 
