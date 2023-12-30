@@ -139,6 +139,6 @@ form div {
     }
 
     #reader {
-        width: auto !important;
+        width: max-content !important;
     }
 }
