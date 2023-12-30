@@ -141,4 +141,8 @@ form div {
     #reader {
         width: max-content !important;
     }
+
+    #result {
+        background-color: aqua;
+    }
 }
