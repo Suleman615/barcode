@@ -139,7 +139,7 @@ form div {
     }
 
     #reader {
-        width: 400px !important;
+        width: fit-content !important;
     }
 
     #result {
