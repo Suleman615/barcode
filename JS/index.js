@@ -30,7 +30,6 @@ function getInput(field) {
         console.error('getUserMedia is not supported');
     }
 }
-// Check if the browser supports getUserMedia
 
 
 
