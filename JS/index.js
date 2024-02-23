@@ -62,9 +62,20 @@ function scanCode(inputField) {
         document.getElementById('result').innerHTML = `<p>Nothing Found</p>`
     }
 
+
+    let qrboxFunction = function(viewfinderWidth, viewfinderHeight) {
+        let minEdgePercentage = 0.7; // 70%
+        let minEdgeSize = Math.min(viewfinderWidth, viewfinderHeight);
+        let qrboxSize = Math.floor(minEdgeSize * minEdgePercentage);
+        return {
+            width: qrboxSize,
+            height: qrboxSize
+        };
+    }
+
     let config = {
         fps: 2,
-        qrbox: { width: 280, height: 280 },
+        qrbox:qrboxFunction,
         rememberLastUsedCamera: true,
         supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
     };
